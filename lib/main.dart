@@ -41,7 +41,7 @@ class Api {
   static final Api I = Api._();
   Api._();
 
-  String baseUrl = 'https://tu-backend.azurewebsites.net';
+  String baseUrl = 'https://app-251027211403.azurewebsites.net/';
   String? token;
   Map<String, dynamic>? me;
 
