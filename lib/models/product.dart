@@ -1,35 +1,35 @@
 class Product {
-  final String? id;
+  final int id;
   final String name;
   final String description;
   final double price;
   final int stock;
-  final String? companyId;
+  final int userId;
 
   Product({
-    this.id,
+    required this.id,
     required this.name,
     required this.description,
     required this.price,
     required this.stock,
-    this.companyId,
+    required this.userId,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json['_id']?.toString() ?? json['id']?.toString(),
+        id: json['id'] ?? 0,
         name: json['name'] ?? '',
         description: json['description'] ?? '',
-        price: (json['price'] ?? 0).toDouble(),
-        stock: (json['stock'] ?? 0).toInt(),
-        companyId: json['companyId']?.toString() ?? json['company']?.toString(),
+        price: (json['price'] as num?)?.toDouble() ?? 0,
+        stock: json['stock'] ?? 0,
+        userId: json['userId'] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
-        if (id != null) '_id': id,
+        'id': id,
         'name': name,
         'description': description,
         'price': price,
         'stock': stock,
-        if (companyId != null) 'companyId': companyId,
+        'userId': userId,
       };
 }
